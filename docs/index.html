@@ -10,20 +10,29 @@
 </head>
 <body>
   <div id="app"></div>
-  <script>
+  
+
+<script>
     window.$docsify = {
       name: 'upupT',
       repo: 'https://github.com/upupT',
 
-      // 加载左侧栏
+
       loadSidebar: true,
-      // 配置封面
-      coverpage: true
+      coverpage: true,
+
+	  // docsify-copy-code
+	  copyCode: {
+		buttonText : '复制',
+		errorText  : '出错',
+		successText: '复制成功'
+	  }
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-bash.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-javascript.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-java.min.js"></script>
+  <script src="//unpkg.com/docsify-copy-code"></script>  
 </body>
 </html>
