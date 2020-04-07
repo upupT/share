@@ -60,8 +60,8 @@ public User retrieve(Long id) {
 
 ```java
 public static final int getQueryTimeout(int timeout, Settings settings) {
- 				// 优先本次查询设置的timeout，其次才是全局设置的timeout，否则为0
-        return timeout != 0 ? timeout : (settings.getQueryTimeout() != null ?  	settings.getQueryTimeout() : 0);
+	// 优先本次查询设置的timeout，其次才是全局设置的timeout，否则为0
+	return timeout != 0 ? timeout : (settings.getQueryTimeout() != null ?  	settings.getQueryTimeout() : 0);
 }
 ```
 
@@ -276,13 +276,9 @@ String sql = "SELECT ...";
 TypedQuery<User> query = entityManager.createQuery(sql, User.class);  
 query.setParameter("id", id);  
 
-// 此处设置timeout，单位：毫秒  
+// 单位：毫秒  
 query.setHint("javax.persistence.query.timeout", 20000);  
 ```
-
-
-
-
 
 
 
@@ -300,8 +296,8 @@ query.setHint("javax.persistence.query.timeout", 20000);
 
 
 mysql 5.6 及以后，有语句执行超时时间变量，用于在服务端对 select 语句进行超时时间限制；
-mysql 5.6 中，名为： max_statement_time （毫秒）
-mysql 5.7 以后，改成： max_execution_time （毫秒）
+mysql 5.6 中，名为： `max_statement_time` （毫秒）
+mysql 5.7 以后，改成： `max_execution_time `（毫秒）
 
 超过这个时间，mysql 就终止 select 语句的执行，客户端抛异常：
 `Query execution was interrupted, max_execution_time exceeded`
@@ -316,7 +312,3 @@ SET SESSION MAX_EXECUTION_TIME=1000;
 
 （3）对某个语句设置
 SELECT max_execution_time=1000 SLEEP(10), a.* from test a;
-
-
-
-
